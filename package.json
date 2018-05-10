@@ -4,8 +4,8 @@
   "description": "a Test from Check24",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "bundle": "concurrently \"jest\" \"webpack-dev-server --watch\""
+    "bundle": "webpack-dev-server --watch",
+    "test": "jest --watch"
   },
   "author": "Chetouani Houssam-Eddine",
   "license": "ISC",
