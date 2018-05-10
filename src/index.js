@@ -1,5 +1,5 @@
 import determineSibNum from './determineSibNum';
-import determinMatchedSiblings from './determineMathingSib';
+import determinMatchedSiblings from './determineMatchedSib';
 
 (function (gb) {
 
@@ -65,6 +65,8 @@ import determinMatchedSiblings from './determineMathingSib';
     init();
   }
 
+
+
   const handleClick = function (ev) {
     score++;
     const clickedElem = ev.target,
@@ -72,7 +74,6 @@ import determinMatchedSiblings from './determineMathingSib';
       mainTileBackground = mainTile.style.background,
       gameScore = document.querySelector("#score h1"),
       gameBestScore = document.querySelector("#score #best-score");
-
 
     if (mainTileBackground !== tileClickedBakground) {
       mainTile.style.background = tileClickedBakground;
@@ -97,5 +98,20 @@ import determinMatchedSiblings from './determineMathingSib';
     gameBestScore.innerHTML = `BEST SCORE: \n ${bestScore}`;
   }
   init();
+
+  /***** automated Player *****/
+
+  // const automatedPlayer = () => {
+  //   let randomNumfromZeroToThirtyFive = Math.floor(Math.random() * 36),
+  //     randomElem = gameTilesArr[randomNumfromZeroToThirtyFive];
+  //   if (randomElem.fireEvent) {
+  //     randomElem.fireEvent("on", "click");
+  //   } else {
+  //     const event = document.createEvent("MouseEvents");
+  //     event.initEvent("click", true, false);
+  //     randomElem.dispatchEvent(event);
+  //   }
+  // };
+  // setInterval(automatedPlayer, 1000);
 
 })(window);
