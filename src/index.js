@@ -112,6 +112,6 @@ import determinMatchedSiblings from './determineMatchedSib';
   //     randomElem.dispatchEvent(event);
   //   }
   // };
-  // setInterval(automatedPlayer, 1000);
+  // setInterval(automatedPlayer, 10);
 
 })(window);
