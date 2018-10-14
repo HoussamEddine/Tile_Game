@@ -4,7 +4,7 @@ const CleanPlugin = require("clean-webpack-plugin");
 const HtmlPlugin = require("html-webpack-plugin");
 
 const config = {
-  entry: "./src/index.js",
+  entry: "./source/index.js",
   module: {
     rules: [
       {
@@ -12,17 +12,23 @@ const config = {
         exclude: /node_modules/,
         loader: "babel-loader"
       }
+    ],
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      }
     ]
   },
   plugins: [
-    new CleanPlugin("dist"),
-    new HtmlPlugin({
-      template: "./index.html",
-    })
+    new CleanPlugin("dist")
+    // new HtmlPlugin({
+    //   template: "./index.html"
+    // })
   ],
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].bundle.js"
+    filename: "[name].js"
   },
   mode: "development",
   devServer: {
@@ -30,6 +36,6 @@ const config = {
     compress: true,
     port: 9000
   }
-}
+};
 
 module.exports = config;

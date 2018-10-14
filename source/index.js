@@ -1,11 +1,10 @@
-import determineSibNum from './determineSibNum';
-import determinMatchedSiblings from './determineMatchedSib';
+import determineSibNum from "./determineSibNum";
+import determinMatchedSiblings from "./determineMatchedSib";
 
-(function (gb) {
-
+(function(gb) {
   const document = gb.document,
     gameBoard = document.getElementById("game-board"),
-    backgrounds = ['#d04141', "#5e88d4", "#aabd86"];
+    backgrounds = ["#d04141", "#5e88d4", "#aabd86"];
 
   let gameTiles,
     gameTilesArr = [],
@@ -14,9 +13,7 @@ import determinMatchedSiblings from './determineMatchedSib';
     score = 0,
     bestScore = 0;
 
-
   const init = () => {
-
     let row = 1,
       column = 1;
 
@@ -49,25 +46,21 @@ import determinMatchedSiblings from './determineMatchedSib';
         mainTile.classList.add("game-tile-origin");
       }
       selectedElems = [mainTile];
-
     }
-    gameTilesArr.forEach((e) => {
-      e.addEventListener("click", (e) => (handleClick(e)));
+    gameTilesArr.forEach(e => {
+      e.addEventListener("click", e => handleClick(e));
     });
     return gameTilesArr;
-
-  }
+  };
 
   const clean = () => {
-    gameTilesArr.forEach((e) => {
+    gameTilesArr.forEach(e => {
       e.parentNode.removeChild(e);
     });
     init();
-  }
+  };
 
-
-
-  const handleClick = function (ev) {
+  const handleClick = function(ev) {
     score++;
     const clickedElem = ev.target,
       tileClickedBakground = clickedElem.style.background,
@@ -78,16 +71,19 @@ import determinMatchedSiblings from './determineMatchedSib';
     if (mainTileBackground !== tileClickedBakground) {
       mainTile.style.background = tileClickedBakground;
     }
-    selectedElems = determinMatchedSiblings(selectedElems, tileClickedBakground);
-    selectedElems.forEach((e) => {
+    selectedElems = determinMatchedSiblings(
+      selectedElems,
+      tileClickedBakground
+    );
+    selectedElems.forEach(e => {
       e.style.background = tileClickedBakground;
       e.style.border = "0";
     });
-    const shouldClean = gameTilesArr.every((e) => {
+    const shouldClean = gameTilesArr.every(e => {
       return e.style.background === tileClickedBakground;
     });
     if (shouldClean) {
-      bestScore === 0 ? bestScore = score : bestScore;
+      bestScore === 0 ? (bestScore = score) : bestScore;
       if (score < bestScore) {
         bestScore = score;
       }
@@ -96,7 +92,7 @@ import determinMatchedSiblings from './determineMatchedSib';
     }
     gameScore.innerHTML = `SCORE: \n ${score}`;
     gameBestScore.innerHTML = `BEST SCORE: \n ${bestScore}`;
-  }
+  };
   init();
 
   /***** automated Player *****/
@@ -113,5 +109,4 @@ import determinMatchedSiblings from './determineMatchedSib';
   //   }
   // };
   // setInterval(automatedPlayer, 10);
-
 })(window);

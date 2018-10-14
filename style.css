@@ -8,6 +8,7 @@
     html {
       margin: 0;
       padding: 0;
+      font-family: 'Raleway', sans-serif;
     }
 
     body {
@@ -17,18 +18,21 @@
     }
 
     #game-container {
-
+      display: flex;
       height: 100%;
     }
 
-    #game-container #game-board {
-      display: flex;
-      flex-wrap: wrap;
+    #game-board {
+
       height: 200px;
       width: 200px;
-      border: 1px solid pink;
       margin: 30vh auto;
 
+    }
+
+    #game-board #game-tiles {
+      display: flex;
+      flex-wrap: wrap;
     }
 
     .game-tile {
@@ -39,4 +43,13 @@
 
     .game-tile-origin {
       border: 3px solid black;
+    }
+
+    #score {
+      height: 100px;
+      width: 100px;
+      display: inline-block;
+      margin: 14% 13%;
+      margin-right: 0%;
+      text-align: center;
     }
